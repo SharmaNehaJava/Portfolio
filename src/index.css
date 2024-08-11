@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  cursor: url('\rocket.png'), auto; 
+}

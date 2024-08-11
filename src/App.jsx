@@ -1,21 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import Skills from './components/Skills.jsx';
 import Blogs from './components/Blog.jsx';
-import Contact  from './components/Contact.jsx';
+import Contact from './components/Contact.jsx';
 import Projects from './components/Projects.jsx';
+import ParticleCurser from './components/ParticleCurser.jsx'; // Import the ParticleCursor component
 
 const App = () => {
   return (
     <Router>
       <div className="bg-black">
+        <ParticleCurser /> {/* Add the ParticleCursor component here */}
         <Routes>
-          <Route exact path="/" component={Home} />
-          <Route path="/skills" component={Skills} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/blog" component={Blogs} />
+          <Route path="/" element={<Home />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blogs />} />
         </Routes>
       </div>
     </Router>
