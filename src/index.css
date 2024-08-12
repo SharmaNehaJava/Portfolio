@@ -5,3 +5,8 @@
 html {
   cursor: url('\rocket.png'), auto; 
 }
+body{
+  overflow-x: hidden;
+}
+
+
