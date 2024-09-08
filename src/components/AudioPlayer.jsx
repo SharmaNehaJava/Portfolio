@@ -1,5 +1,4 @@
-// src/components/AudioPlayer.js
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import '../CSS/AudioPlayer.css';
 
 const AudioPlayer = () => {
@@ -15,12 +14,34 @@ const AudioPlayer = () => {
     setIsPlaying(!isPlaying);
   };
 
+  useEffect(() => {
+    const playAudio = async () => {
+      try {
+        await audioRef.current.play();
+        setIsPlaying(true);
+      } catch (error) {
+        console.error("Auto-play was blocked by the browser:", error);
+        setIsPlaying(false);
+      }
+    };
+
+    playAudio();
+
+    audioRef.current.addEventListener('play', () => setIsPlaying(true));
+    audioRef.current.addEventListener('pause', () => setIsPlaying(false));
+
+    return () => {
+      audioRef.current.removeEventListener('play', () => setIsPlaying(true));
+      audioRef.current.removeEventListener('pause', () => setIsPlaying(false));
+    };
+  }, []);
+
   return (
-    <div className="footer-sound " onClick={togglePlayPause}>
-      <audio ref={audioRef} src="path/to/your-audio-file.mp3" />
-      <div className={`sound-bars ${isPlaying ? 'playing' : ''} `}>
-        <div className="sbar inline-block"></div>
-        <div className="sbar inline-block"></div>
+    <div className="footer-sound" onClick={togglePlayPause}>
+      <audio ref={audioRef} src="song.mp3" />
+      <div className={`sound-bars ${isPlaying ? 'playing' : 'paused'}`}>
+        <div className="sbar"></div>
+        <div className="sbar"></div>
         <div className="sbar"></div>
         <div className="sbar"></div>
       </div>

@@ -43,18 +43,18 @@ const Home = () => {
         </Link>
       </nav>
       <div className="absolute lg:top-1/3 left-auto text-center justify-center m-auto items-center ">
-        <h1 className='text-blue-300 hover:opacity-100 hover:text-blue-500'
+        <h1 className='text-blue-300 hover:opacity-100 hover:text-blue-500 '
           style={{
             fontFamily: 'Bungee Hairline, sans-serif',
             fontOpticalSizing: 'auto',
-            fontWeight: 600,
+            fontWeight: 400,
             fontStyle: 'normal',
             fontSize: '20vh', // 1/3 of the viewport height
           }}
         >
-          NEHA SHARMA
+            NEHA SHARMA
         </h1> 
-        <h4 className='font-sans text-blue-400 justify-evenly'>FULL STACK WEB DEVELOPER | FREELANCER</h4>
+        <h4 className='font-sans text-white'>FULL STACK WEB DEVELOPER | FREELANCER</h4>
       </div>
       <AudioPlayer /> {/* Add the AudioPlayer component here */}
     </div>
