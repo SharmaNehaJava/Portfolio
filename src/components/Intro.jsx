@@ -1,23 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Intro = () => {
-  return (
-    <div className="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4">
-      <h1 className="text-6xl font-bold mb-4">Neha Sharma</h1>
-      <h2 className="text-2xl text-blue-400 mb-8">Full Stack Web Developer | B.Tech in Computer Science</h2>
-      
-      <p className="text-lg text-center max-w-4xl mb-6">
-        A software engineer who is organized, focused, and eager to take on new challenges. I have strong problem-solving abilities
-        and a drive to investigate novel directions in computer science engineering. Adept at creating complex initiatives with an emphasis 
-        on effectiveness and excellence.
-      </p>
+  const [hovered, setHovered] = useState(false);
 
-      <div className="flex space-x-4 mb-8">
+  // Handle hover effect
+  const handleHover = () => {
+    setHovered(true);
+  };
+
+  const handleLeave = () => {
+    setHovered(false);
+  };
+
+  return (
+    <div
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 bg-cover bg-center"
+      style={{ backgroundImage: `url('/stars.jpg')` }} // Background image
+    >
+      {/* Left side content */}
+      <div className="flex-1 text-white p-8 text-center lg:text-left">
+        <h1 className="text-5xl font-bold mb-4">Neha Sharma</h1>
+        <h2 className="text-xl text-blue-400 mb-8">
+          Full Stack Web Developer | B.Tech in Computer Science
+        </h2>
+        <p className="text-lg mb-6 text-justify">
+          A software engineer who is organized, focused, and eager to take on new challenges.
+        </p>
+        <p className="text-lg mb-6 text-justify">
+          Proficient in Data Structures & Algorithms, Database Management Systems, Object-Oriented Programming, and full-stack development
+          using the MERN stack. I am constantly learning and applying new technologies in real-world projects.
+        </p>
+
+        <div className="flex space-x-4 mb-8">
+        <div className='bg-white rounded-full'>
+            <img width="48" height="48" src="https://img.icons8.com/color/60/linkedin.png" alt="linkedin"/>
+          </div>
+          <div className='bg-white rounded-full'>
+          <img width="48" height="48" src="https://img.icons8.com/ios-glyphs/60/github.png" alt="github"/>
+          </div>
+          <div className='bg-white rounded-full'>
+          <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-color-tal-revivo.png" alt="external-level-up-your-coding-skills-and-quickly-land-a-job-logo-color-tal-revivo"/>
+          </div>
+      </div>
+
+        <div className="flex space-x-4 mb-8">
         <a
           href="https://www.linkedin.com/in/nehasharma1782/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-600"
+          className="text-blue-400 hover:text-blue-600 underline"
         >
           LinkedIn
         </a>
@@ -25,7 +56,7 @@ const Intro = () => {
           href="https://github.com/SharmaNehaJava"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-600"
+          className="text-blue-400 hover:text-blue-600 underline"
         >
           GitHub
         </a>
@@ -33,19 +64,55 @@ const Intro = () => {
           href="https://leetcode.com/u/neha_sharma_1782/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-600"
+          className="text-blue-400 hover:text-blue-600 underline"
         >
           LeetCode
         </a>
       </div>
-
-      <div className="space-y-4">
-        <h3 className="text-2xl font-bold mb-4">Summary</h3>
-        <p className="max-w-4xl text-center">
-          Proficient in Data Structures & Algorithms, Database Management Systems, Object-Oriented Programming, and full-stack development 
-          using the MERN stack. I am constantly learning and applying new technologies in real-world projects.
-        </p>
       </div>
+
+      {/* Right side layered divs */}
+      <div
+        className="flex justify-center items-center h-screen w-1/2"
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+      >
+        {/* Outermost background circle */}
+        <div className="relative w-[300px] h-[300px] rounded-full bg-gray-900 z-0 flex justify-center items-center overflow-hidden">
+          {/* Now the pink div has overflow-hidden */}
+
+          {/* Rotating rectangle (changes to square on hover) */}
+          <div
+            className={`absolute bg-gradient-to-r from-blue-500 to-pink-500 transition-all duration-500 ease-in-out transform ${
+              hovered ? 'w-[350px] h-[350px]' : 'w-[200px] h-[400px]'
+            } rotate-360`}
+            style={{ animation: 'rotate 10s linear infinite' }}
+          ></div>
+
+          {/* Circular div with the profile picture */}
+          <img
+            src="/me_Formal2.jpg" // Profile image path
+            alt="Neha Sharma"
+            className="w-[290px] h-[290px] z-10 object-cover rounded-full"
+          />
+        </div>
+      </div>
+
+      {/* Inline styles for rotation animation */}
+      <style jsx>{`
+        @keyframes rotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .rotate-360 {
+          animation: rotate 10s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };

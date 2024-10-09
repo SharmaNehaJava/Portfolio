@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
 
 const skills = [
   { name: 'HTML', icon: '/html.png' },
@@ -13,101 +12,62 @@ const skills = [
   { name: 'Postgres', icon: '/postgresql.svg' },
   { name: 'Java', icon: '/java.png' },
   { name: 'C', icon: '/c.jpeg' },
+  { name: 'Python', icon: 'https://img.icons8.com/color/48/python--v1.png' },
 ];
 
-// Function to generate random initial positions within the screen boundaries
-const getRandomPosition = (containerWidth, containerHeight) => {
-  const x = Math.random() * (containerWidth - 100); // Random position on X-axis
-  const y = Math.random() * (containerHeight - 100); // Random position on Y-axis
-  return { x, y };
-};
-
 const SkillsPage = () => {
-  const [positions, setPositions] = useState([]);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [containerRef, setContainerRef] = useState(null);
 
   useEffect(() => {
-    if (containerRef) {
-      const containerWidth = containerRef.offsetWidth;
-      const containerHeight = containerRef.offsetHeight;
-      setPositions(skills.map(() => getRandomPosition(containerWidth, containerHeight)));
-    }
-  }, [containerRef]);
+    const floatingDivs = document.querySelectorAll('.animate-skill');
 
-  const handleMouseMove = (event) => {
-    if (containerRef) {
-      const rect = containerRef.getBoundingClientRect();
-      setMousePosition({
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top,
-      });
-    }
-  };
+    floatingDivs.forEach(div => {
+      let moveX = 1;
+      let moveY = 1;
+      const animation = () => {
+        // Set current position of each div
+        const currentX = parseFloat(div.getAttribute('data-x')) || 0;
+        const currentY = parseFloat(div.getAttribute('data-y')) || 0;
 
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-  };
+        // Move slightly up/down and left/right
+        const newX = currentX + moveX * 0.05;
+        const newY = currentY + moveY * 0.05;
 
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-  };
+        // Reverse direction on limits
+        if (newX > 1 || newX < -1) moveX *= -1;
+        if (newY > 1 || newY < -1) moveY *= -1;
 
-  const calculateRepelEffect = (x, y, containerWidth, containerHeight) => {
-    const distance = Math.sqrt((x - mousePosition.x) ** 2 + (y - mousePosition.y) ** 2);
-    const maxDistance = 300; // Increase the distance for a bigger repulsion effect
+        // Apply transformation
+        div.style.transform = `translate(${newX}px, ${newY}px)`;
+        div.setAttribute('data-x', newX);
+        div.setAttribute('data-y', newY);
 
-    if (distance < maxDistance) {
-      const angle = Math.atan2(y - mousePosition.y, x - mousePosition.x);
-      const repelStrength = (maxDistance - distance) / maxDistance; // Strength of the repulsion
-      const offsetX = Math.cos(angle) * repelStrength * 100; // Adjust movement range
-      const offsetY = Math.sin(angle) * repelStrength * 100;
+        requestAnimationFrame(animation);
+      };
 
-      const newX = Math.max(0, Math.min(containerWidth - 100, x + offsetX));
-      const newY = Math.max(0, Math.min(containerHeight - 100, y + offsetY));
-
-      return { offsetX: newX - x, offsetY: newY - y };
-    }
-
-    return { offsetX: 0, offsetY: 0 }; // No repulsion if mouse is too far
-  };
+      animation();
+    });
+  }, []);
 
   return (
-    <div
-      ref={setContainerRef}
-      className="relative bg-gray-900 m-4 rounded-lg text-white w-full h-screen overflow-hidden"
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {skills.map((skill, index) => {
-        const { x, y } = positions[index] || { x: 0, y: 0 };
-        const containerWidth = containerRef ? containerRef.offsetWidth : 0;
-        const containerHeight = containerRef ? containerRef.offsetHeight : 0;
-        const { offsetX, offsetY } = calculateRepelEffect(x, y, containerWidth, containerHeight);
-
-        return (
-          <motion.div
-            key={skill.name}
-            initial={{ x, y }}
-            animate={{
-              x: x + offsetX,
-              y: y + offsetY,
-              scale: offsetX || offsetY ? 1.2 : 1, // Scale up on interaction
-            }}
-            transition={{
-              duration: 0.6, // Smooth transition
-              ease: 'easeOut',
-            }}
-            className="absolute"
-            style={{ top: 0, left: 0 }}
+    <div className="relative w-full h-auto bg-gray-950">
+      {/* Skill Divs */}
+      <div className="relative z-10 flex flex-wrap gap-6 p-4 justify-center items-center">
+        {skills.map((skill, index) => (
+          <div
+            key={index}
+            className="animate-skill group flex flex-col items-center bg-gray-700 p-4 rounded-lg shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl duration-300"
           >
-            <img src={skill.icon} alt={skill.name} className="w-20 h-20 transition-transform duration-300" />
-            <h3 className="text-center text-lg">{skill.name}</h3>
-          </motion.div>
-        );
-      })}
+            <img
+              src={skill.icon}
+              alt={skill.name}
+              className="w-12 h-12 mb-2 transition-transform group-hover:scale-110"
+            />
+            <p className="text-base font-semibold text-white transition-opacity duration-300 group-hover:opacity-80">
+              {skill.name}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

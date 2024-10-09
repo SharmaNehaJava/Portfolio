@@ -1,48 +1,70 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-
 
 const Contact = () => {
   const form = useRef();
-  const canvasRef = useRef();
+  const [feedback, setFeedback] = useState(""); // To show feedback messages
+  const [showPopup, setShowPopup] = useState(false); // To toggle the popup
 
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
-      .sendForm('service_crs4oib', 'template_3j6zv4I', form.current, {
-        publicKey: '8UaUbudREVfpiUO3Y',
-      })
+      .sendForm(
+        "service_crs4oib", // Your EmailJS service ID
+        "template_6lveu2e", // Your EmailJS template ID
+        form.current,       // Ref to the form
+        "8UaUbudREVfpiUO3Y" // Your EmailJS public key
+      )
       .then(
-        () => {
-          console.log('SUCCESS!');
+        (result) => {
+          setFeedback(""); // Remove feedback message after successful send
+          setShowPopup(true); // Show the popup on success
+          form.current.reset(); // Clear the form after submission
         },
         (error) => {
-          console.log('FAILED...', error.text);
+          setFeedback("Failed to send message. Please try again.");
+          console.log("FAILED...", error.text);
         }
       );
+  };
+
+  // Function to close the popup
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   return (
     <>
       <div className="relative overflow-hidden bg-black text-white min-h-screen flex flex-col">
-        <div className="flex flex-col items-center justify-center text-center ">
-          <div className=" w-full">
-          <div className=" px-4 py-2 rounded-full text-4xl font-bold whitespace-nowrap animate-slideText text-blue-500">Contact!! Contact!! Contact!! Contact!! Contact!! Contact!! </div>
+        <div className="flex flex-col items-center justify-center text-center">
+          <div className="w-full">
+            <div className="px-4 py-2 rounded-full text-4xl font-bold whitespace-nowrap animate-slideText text-blue-500">
+              Contact!! Contact!! Contact!!
+            </div>
           </div>
-          
+
           <p className="dark:text-dark-6 text-sm text-center mx-8">
-          If you're interested in collaborating on a project, exploring freelance opportunities, discussing potential job openings, or simply having a professional conversation, I'm here to connect. As a BTech CSE student with experience in full-stack web development and Java, particularly within the MERN stack, I am eager to explore new challenges and opportunities. I truly appreciate your time and look forward to engaging with you. Let's talk and see how we can work together!
+            If you're interested in collaborating on a project, exploring freelance opportunities, or discussing potential job openings, I'm here to connect...
           </p>
         </div>
+
         <div className="flex flex-wrap">
-          <div className="w-full lg:w-1/2 ">
+          <div className="w-full lg:w-1/2">
             <div className="relative rounded-lg p-4 shadow-lg dark:bg-dark-2 sm:p-12">
               <form ref={form} onSubmit={sendEmail}>
-                <ContactInputBox type="text" name="user_name" placeholder="Your Name" />
-                <ContactInputBox type="email" name="user_email" placeholder="Your Email" />
-                <ContactInputBox type="text" name="user_phone" placeholder="Your Phone" />
-                <ContactTextArea row="6" placeholder="Your Message" name="message" defaultValue="" />
+                {/* Name field */}
+                <ContactInputBox type="text" name="from_name" placeholder="Your Name" />
+                
+                {/* Hardcoded recipient's name */}
+                <input type="hidden" name="to_name" value="Neha" />
+                
+                {/* Email field */}
+                <ContactInputBox type="email" name="reply_to" placeholder="Your Email" />
+                
+                {/* Message text area */}
+                <ContactTextArea row="6" placeholder="Your Message" name="message" />
+
                 <div>
                   <button type="submit" className="w-full rounded border border-primary p-3 transition hover:bg-opacity-90">
                     Send Message
@@ -51,40 +73,56 @@ const Contact = () => {
               </form>
             </div>
           </div>
+
           <div className="w-full lg:w-1/2">
-            <canvas ref={canvasRef} className="w-full h-full"></canvas>
+            {/* This can be used for any other content you want to show */}
+            <canvas className="w-full h-full"></canvas>
           </div>
         </div>
+
+        {/* Pop-up Modal for confirmation */}
+        {showPopup && (
+          <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+            <div className="bg-green-500 text-white p-6 rounded-lg">
+              <h3 className="text-lg font-bold">Email Sent!</h3>
+              <p>Your message has been sent successfully.</p>
+              <button
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                onClick={closePopup}
+              >
+                Okay
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* This will be removed to avoid constant feedback message */}
+        {/* {feedback && <p className="mt-4 text-sm text-green-500">{feedback}</p>} */}
       </div>
     </>
   );
 };
 
-const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
-  return (
-    <div className="mb-2">
-      <textarea
-        rows={row}
-        placeholder={placeholder}
-        name={name}
-        className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 bg-gray-800"
-        defaultValue={defaultValue}
-      />
-    </div>
-  );
-};
+const ContactTextArea = ({ row, placeholder, name }) => (
+  <div className="mb-2">
+    <textarea
+      rows={row}
+      placeholder={placeholder}
+      name={name}
+      className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 bg-gray-800"
+    />
+  </div>
+);
 
-const ContactInputBox = ({ type, placeholder, name }) => {
-  return (
-    <div className="mb-2">
-      <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 bg-gray-800"
-      />
-    </div>
-  );
-};
+const ContactInputBox = ({ type, placeholder, name }) => (
+  <div className="mb-2">
+    <input
+      type={type}
+      placeholder={placeholder}
+      name={name}
+      className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6 bg-gray-800"
+    />
+  </div>
+);
 
 export default Contact;
