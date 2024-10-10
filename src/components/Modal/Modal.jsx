@@ -34,19 +34,19 @@ export default function Modal({ setShowModal }) {
                     <IoClose className='cross' onClick={() => { setShowModal(false) }} />
                 </div>
                 <div className='Heading'>
-                    <h1>Ai-SAAS</h1>
+                    <h1>Hawkers</h1>
                 </div>
                 <div>
                     <hr className='line' />
                 </div>
                 <div className='Demo'>
                     <div className='Demo-live'>
-                        <a href='https://ai-saa-s-one.vercel.app/' target="_blank" rel="noreferrer">
+                        <a href='#' target="_blank" rel="noreferrer">
                             LIVE DEMO
                         </a>
                     </div>
                     <div className='Demo-live'>
-                        <a href='https://github.com/vivekkumar2909/Ai-SaaS' target="_blank" rel="noreferrer">
+                        <a href='https://github.com/SharmaNehaJava/Hawkers-Frontend' target="_blank" rel="noreferrer">
                             SOURCE CODE
                         </a>
                     </div>
@@ -54,20 +54,20 @@ export default function Modal({ setShowModal }) {
                 <div className='container'>
                     <div className='image-con'>
                         <img src={image} alt='Ai-SaaS' />
-                        <div className='image_con2'>
-                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items' src={budget1} alt='Image 1' />
-                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items' src={budget2} alt='Image 2' />
-                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items' src={budget} alt='Image 3' />
-                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items' src={budget3} alt='Image 4' />
+                        <div className='image_con2  border-2 border-gray-400 bg-gray-300 p-2 rounded shadow-lg'>
+                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items p-1 bg-gray-400 border-2 border-white' src={budget1} alt='Image 1' />
+                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items p-1 bg-gray-400 border-2 border-white' src={budget2} alt='Image 2' />
+                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items p-1 bg-gray-400 border-2 border-white' src={budget} alt='Image 3' />
+                            <img onMouseEnter={handleChangeImg} onMouseOut={handleChangeImgOut} className='items p-1 bg-gray-400 border-2 border-white' src={budget3} alt='Image 4' />
                         </div>
                     </div>
 
-                    <div className='image-con1'>
+                    <div className='image-con1 text-black'>
                         <div className='description'>
                             <strong>Description</strong>
                         </div>
                         <p className='para'>
-                            This project is an advanced AI-driven SaaS platform designed to provide users with a wide range of generative capabilities using the powerful OpenAI API...
+                        "Hawkers" is a web platform designed to connect customers with local street vendors, enhancing visibility and accessibility for hawkers in urban areas. Our goal is to promote economic empowerment for street vendors and foster community engagement.
                         </p>
 
                         <div className='tech'>
@@ -75,20 +75,21 @@ export default function Modal({ setShowModal }) {
                         </div>
                         <div className='tech_used'>
                             <div className='boarderClass'>React</div>
-                            <div className='boarderClass'>Next.js</div>
+                            <div className='boarderClass'>Express</div>
                             <div className='boarderClass'>MongoDB</div>
                             <div className='boarderClass'>Tailwind CSS</div>
-                            <div className='boarderClass'>PrismaDB</div>
+                            {/* <div className='boarderClass'></div> */}
                         </div>
 
                         <h1 className='feature'>Features</h1>
                         <p className='para'>
-                            <div>1. Code Generation: Effortlessly generate code snippets, functions, or entire modules...</div>
-                            <div>2. Image Generation: Users can create custom images by specifying detailed prompts...</div>
-                            <div>3. Video Generation: Transform text prompts into dynamic video content...</div>
-                            <div>4. Conversation Generation: Build realistic and context-aware conversations...</div>
-                            <div>5. Music Generation: Compose unique music tracks based on user inputs...</div>
+                            <div><span className='text-blue-800'>Real-Time Location Tracking:</span> Easily locate nearby street vendors in real-time.</div>
+                            <div><span className='text-blue-800'> Diverse Product Range:</span> Explore a wide variety of products, from delicious street food to unique accessories.</div>
+                            <div><span className='text-blue-800'>Customer Notifications:</span>  Receive alerts when your favorite vendors are nearby.</div>
+                            <div><span className='text-blue-800'> Vendor Profiles:</span>  Detailed profiles of vendors and their offerings for informed choices. </div>
                         </p>
+                        <h1 className='feature'>Objectives</h1>
+                        <p>Boost the economic stability of street vendors. Improve customer convenience and access to local goods. Strengthen community support for local businesses. Impact: "Hawkers" aims to create a more equitable and vibrant street vending ecosystem, enriching urban communities and revitalizing local markets.</p>
                     </div>
                 </div>
             </div>

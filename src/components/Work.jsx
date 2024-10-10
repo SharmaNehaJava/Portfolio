@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { BsOpencollective } from "react-icons/bs";
 import { motion } from 'framer-motion';
@@ -11,41 +11,47 @@ import Modal2 from './Modal/Modal2'
 import AppWrap from './Wrapper/AppWrap';
 import MotionWrap from './Wrapper/MotionWrap';
 
-import { urlFor, client } from '../Client.jsx';
 import '../CSS/Work.css';
 
 const Work = () => {
-  const [works, setWorks] = useState([]);
-  const [filterWork, setFilterWork] = useState([]);
+  // Hardcoded data for works
+  const worksData = [
+    {
+      title: 'Hawkers',
+      description: 'A platform connecting local street vendors with customers for better accessibility.',
+      projectLink: '#',
+      codeLink: 'https://github.com/SharmaNehaJava/Hawkers-Frontend',
+      tags: ['MERN'],
+      imgUrl: "../../public/Modal/Modal_0.png",
+    },
+    {
+      title: 'UniBus',
+      description: 'A university bus tracking system to provide real-time location updates to students.',
+      projectLink: 'https://uni-3ostcm0in-nehas-projects-66b4a8e9.vercel.app/',
+      codeLink: 'https://github.com/SharmaNehaJava/Uni-Bus',
+      tags: ['MERN'],
+      imgUrl: "../../public/Modal1/Model1_0.png",
+    },
+    {
+      title: 'EasyFill',
+      description: 'An easy-to-use system for refilling and managing product inventories for vendors.',
+      projectLink: 'https://sharmanehajava.github.io/EasyFill/',
+      codeLink: 'https://github.com/SharmaNehaJava/EasyFill',
+      tags: ['Frontend'],
+      imgUrl: "../../public/Modal2/Modal2_0.png",
+    },
+  ];
+
+  const [filterWork, setFilterWork] = useState(worksData);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-  const [showModal, setShowModal] = useState(false)
-  const [showModal1, setShowModal1] = useState(false)
-  const [showModal2, setShowModal2] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
 
-  useEffect(() => {
-    const query = '*[_type == "works"]';
-
-    client.fetch(query).then((data) => {
-      setWorks(data);
-
-      setFilterWork(data);
-    });
-  }, []);
-
-  const handleModal = () => {
-    setShowModal(!showModal);
-    console.log(showModal);
-    console.log("handle")
-  }
-  const handleModal1 = () => {
-    setShowModal1(!showModal1);
-    console.log("handle")
-  }
-  const handleModal2 = () => {
-    setShowModal2(!showModal2);
-    console.log("handle")
-  }
+  const handleModal = () => setShowModal(!showModal);
+  const handleModal1 = () => setShowModal1(!showModal1);
+  const handleModal2 = () => setShowModal2(!showModal2);
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
@@ -55,33 +61,30 @@ const Work = () => {
       setAnimateCard([{ y: 0, opacity: 1 }]);
 
       if (item === 'All') {
-        setFilterWork(works);
+        setFilterWork(worksData);
       } else {
-        setFilterWork(works.filter((work) => work.tags.includes(item)));
+        setFilterWork(worksData.filter((work) => work.tags.includes(item)));
       }
     }, 500);
   };
 
   const nameHandler = (title) => {
-    console.log(title);
-    if (title === 'Budget-Trecker') {
-      handleModal()
+    if (title === 'Hawkers') {
+      handleModal();
+    } else if (title === 'UniBus') {
+      handleModal1();
+    } else if (title === 'EasyFill') {
+      handleModal2();
     }
-    if (title === 'IMDB-Clone') {
-      console.log(title);
-      handleModal1()
-    }
-    if (title === 'Ai SaaS') {
-      handleModal2()
-    }
-  }
+  };
 
   return (
-    <>
-      <h2 className="head-text">My Creative <span>Portfolio</span> Section</h2>
+    <div id="projects-section" className='text-white'>
+      <h2 className="text-8xl text-center font-bold pt-4">P<span className='text-4xl animate-pulse underline '>rojects</span></h2>
 
-      <div className="app__work-filter">
-        {['Backend', 'UI/UX', 'Web App', 'Next JS', 'React JS', 'All'].map((item, index) => (
+      <div className='bg-gray-900 m-4 p-1 rounded-md'>
+      <div className="app__work-filter bg-gray-800 rounded-md">
+        {['Frontend', 'MERN', 'All'].map((item, index) => (
           <div
             key={index + 1}
             onClick={() => handleWorkFilter(item)}
@@ -99,11 +102,8 @@ const Work = () => {
       >
         {filterWork.map((work, index) => (
           <div className="app__work-item app__flex" key={index}>
-            <div
-              className="app__work-img app__flex"
-
-            >
-              <img src={urlFor(work.imgUrl)} alt={work.name} />
+            <div className="app__work-img app__flex">
+              <img src={work.imgUrl} alt={work.name} />
 
               <motion.div
                 whileHover={{ opacity: [0, 1] }}
@@ -111,12 +111,11 @@ const Work = () => {
                 className="app__work-hover app__flex"
               >
                 <a href={work.projectLink} target="_blank" rel="noreferrer">
-
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
                     whileHover={{ scale: [1, 0.90] }}
                     transition={{ duration: 0.25 }}
-                    className="app__flex"
+                    className="app__flex "
                   >
                     <AiFillEye />
                   </motion.div>
@@ -138,9 +137,7 @@ const Work = () => {
                   transition={{ duration: 0.25 }}
                   className="app__flex"
                 >
-                  <BsOpencollective onClick={() =>
-                    nameHandler(work.title)
-                  } />
+                  <BsOpencollective onClick={() => nameHandler(work.title)} />
                 </motion.div>
 
               </motion.div>
@@ -158,16 +155,13 @@ const Work = () => {
         ))}
       </motion.div>
 
-      {
-        showModal && <Modal1 setShowModal={setShowModal} />
-      }
-      {
-        showModal1 && <Modal2 setShowModal={setShowModal1} />
-      }
-      {
-        showModal2 && <Modal setShowModal={setShowModal2} />
-      }
-    </>
+      {showModal && <Modal closeModal={handleModal} />}
+      {showModal1 && <Modal1 closeModal={handleModal1} />}
+      </div>
+
+      
+      {showModal2 && <Modal2 closeModal={handleModal2} />}
+    </div>
   );
 };
 

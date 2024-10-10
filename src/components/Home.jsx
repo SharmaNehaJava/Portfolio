@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-scroll'; // Import from react-scroll
+import { Link } from 'react-scroll'; // Import Link from react-scroll
 import Moon from './Moon'; // Import the Moon component
-import AudioPlayer from '../components/AudioPlayer'; // Import the AudioPlayer component
 
 const Home = () => {
   return (
-    <div className="bg-black relative h-screen flex flex-col items-center justify-center text-center">
+    <div id="home-section" className="bg-black relative h-screen flex flex-col items-center justify-center text-center">
       <div className="justify-center items-center mx-auto">
         <Moon /> {/* Add the Moon component here */}
       </div>
@@ -15,7 +14,7 @@ const Home = () => {
         {/* Centered Navigation Links */}
         <div className="flex space-x-6 justify-center">
           <Link
-            to="home"
+            to="home-section"
             smooth={true}
             duration={500}
             className="text-white font-serif transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline"
@@ -23,7 +22,15 @@ const Home = () => {
             Home
           </Link>
           <Link
-            to="/SkillPage"
+            to="intro"
+            smooth={true}
+            duration={500}
+            className="text-pink-300  font-serif transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline"
+          >
+            Intro
+          </Link>
+          <Link
+            to="skills-section"
             smooth={true}
             duration={500}
             className="text-white font-serif transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline"
@@ -39,14 +46,6 @@ const Home = () => {
             Projects
           </Link>
           <Link
-            to="contact-section"
-            smooth={true}
-            duration={500}
-            className="text-white font-serif transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline"
-          >
-            Contact
-          </Link>
-          <Link
             to="blog-section"
             smooth={true}
             duration={500}
@@ -54,25 +53,34 @@ const Home = () => {
           >
             Blogs
           </Link>
+          <Link
+            to="contact-section"
+            smooth={true}
+            duration={500}
+            className="text-white font-serif transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline"
+          >
+            Contact
+          </Link>
+          
         </div>
 
-        {/* Audio Player in the top right */}
+        {/* Resume Link in the top right */}
         <div className="absolute right-4 top-4">
-        <a
-          href="/neha_resume.pdf" // Update this to your actual resume link
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-serif underline text-blue-400 hover:text-fuchsia-400 transition-all duration-300 px-4 py-2 m-10 rounded-full shadow-lg"
-        >
-          Resume
-        </a>
-          {/* <AudioPlayer /> */}
+          <a
+            href="/neha_resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-serif underline text-blue-400 hover:text-fuchsia-400 transition-all duration-300 px-4 py-2 m-10 rounded-full shadow-lg"
+          >
+            Resume
+          </a>
         </div>
       </nav>
 
       {/* Main Content */}
       <div className="absolute lg:top-1/3 left-auto text-center justify-center m-auto items-center">
-        <h1 className="text-blue-300 hover:opacity-100 hover:text-blue-500"
+        <h1
+          className="text-blue-300 hover:opacity-100 hover:text-blue-500"
           style={{
             fontFamily: 'Bungee Hairline, sans-serif',
             fontOpticalSizing: 'auto',
@@ -84,12 +92,9 @@ const Home = () => {
           NEHA SHARMA
         </h1>
         <h4 className="font-sans text-white transform transition-transform duration-500 hover:scale-110">
-  FULL STACK WEB DEVELOPER | FREELANCER
-</h4>
-
+          FULL STACK WEB DEVELOPER | FREELANCER
+        </h4>
       </div>
-
-      
     </div>
   );
 };

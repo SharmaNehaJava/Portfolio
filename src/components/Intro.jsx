@@ -13,7 +13,7 @@ const Intro = () => {
   };
 
   return (
-    <div
+    <div id="intro"
       className="min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 bg-cover bg-center"
       style={{ backgroundImage: `url('/stars.jpg')` }} // Background image
     >

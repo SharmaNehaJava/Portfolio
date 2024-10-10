@@ -95,7 +95,7 @@ These blogs reflect my journey, my challenges, and my passion for the field of t
   }, []);
 
   return (
-    <>
+    <div id="blog-section">
       <section className="bg-gray-950 px-4 text-white dark:bg-dark py-auto px-auto h-auto">
         <div className="container mx-auto">
           <div className="text-center mb-8">
@@ -131,7 +131,7 @@ These blogs reflect my journey, my challenges, and my passion for the field of t
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
