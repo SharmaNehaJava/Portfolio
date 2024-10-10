@@ -22,7 +22,7 @@ const Work = () => {
       projectLink: '#',
       codeLink: 'https://github.com/SharmaNehaJava/Hawkers-Frontend',
       tags: ['MERN'],
-      imgUrl: "../../public/Modal/Modal_0.png",
+      imgUrl: "/Modal/Modal_0.png",
     },
     {
       title: 'UniBus',
@@ -30,7 +30,7 @@ const Work = () => {
       projectLink: 'https://uni-3ostcm0in-nehas-projects-66b4a8e9.vercel.app/',
       codeLink: 'https://github.com/SharmaNehaJava/Uni-Bus',
       tags: ['MERN'],
-      imgUrl: "../../public/Modal1/Model1_0.png",
+      imgUrl: "/Modal1/Model1_0.png",
     },
     {
       title: 'EasyFill',
@@ -38,7 +38,7 @@ const Work = () => {
       projectLink: 'https://sharmanehajava.github.io/EasyFill/',
       codeLink: 'https://github.com/SharmaNehaJava/EasyFill',
       tags: ['Frontend'],
-      imgUrl: "../../public/Modal2/Modal2_0.png",
+      imgUrl: "/Modal2/Modal2_0.png",
     },
   ];
 
