@@ -164,10 +164,11 @@ const BlogCard = ({ image, date, title, description, onClick, isLiked, onLike })
 };
 
 // Blog Modal Component
+// Blog Modal Component
 const BlogModal = ({ blog, onClose, isLiked, onLike }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 ">
-      <div className="bg-white text-black p-8 rounded-lg max-w-3xl w-full relative overflow-y-auto max-h-screen">
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+      <div className="bg-white text-black p-4 md:p-8 rounded-lg max-w-3xl w-full relative overflow-y-auto max-h-[90vh]">
         <button
           className="absolute top-2 right-2 text-xl font-bold text-gray-600 hover:text-gray-900"
           onClick={onClose}
@@ -175,29 +176,24 @@ const BlogModal = ({ blog, onClose, isLiked, onLike }) => {
           &times;
         </button>
         <div className="text-2xl font-semibold mb-4">{blog.title}</div>
-        <div className="p-4 m-4 text-gray-700 mb-4">{blog.content}</div>
-        <div className="flex justify-between items-center mt-4">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-            onClick={onLike}
-          >
-            <img
-              src={isLiked ? "https://img.icons8.com/ios-filled/50/fa314a/like.png" : "https://img.icons8.com/ios/50/like.png"}
-              alt="like"
-              className="w-8 h-8 inline-block"
-            />
-            <span className="ml-2">{isLiked ? "Liked" : "Like"}</span>
-          </button>
-          <button
-            className="text-red-500 underline hover:text-red-700 transition"
-            onClick={onClose}
-          >
-            Close
-          </button>
+        <div className="p-2 md:p-4 m-4 text-gray-700 mb-4 overflow-auto h-80 md:h-auto">
+          {blog.content}
+        </div>
+        <div className="flex items-center mt-4 justify-between">
+          <img
+            src={isLiked ? "https://img.icons8.com/ios-filled/50/fa314a/like.png" : "https://img.icons8.com/ios/50/like.png"}
+            alt="like"
+            className="w-8 h-8 cursor-pointer transition-transform hover:scale-125"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent opening modal when liking
+              onLike();
+            }}
+          />
         </div>
       </div>
     </div>
   );
 };
+
 
 export default Blog;

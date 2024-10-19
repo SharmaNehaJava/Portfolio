@@ -56,15 +56,15 @@ const Contact = () => {
       </div>
 
       {/* Main Content: Geometry & Contact Form Centered */}
-      <div className="flex flex-grow h-full">
+      <div className="flex flex-grow h-full flex-col md:flex-row"> {/* Layout adjustments */}
         {/* Geometry Side */}
-        <div className="w-full md:w-1/2 bg-black flex items-center justify-center">
-          <GmailLogo3D />
+        <div className="w-full md:w-1/2 lg:w-2/5 bg-black flex items-center justify-center p-4">
+          <GmailLogo3D className="h-40 md:h-auto" /> {/* Adjusted height */}
         </div>
 
         {/* Form Side (Vertically and Horizontally Centered) */}
-        <div className="w-full md:w-1/2 flex items-center justify-center bg-black text-white h-1/2 md:h-full my-auto">
-          <div className="rounded-lg shadow-lg p-4 w-full bg-gray-800 max-w-md ">
+        <div className="w-full md:w-1/2 lg:w-3/5 flex items-center justify-center bg-black text-white h-1/2 md:h-full my-auto">
+          <div className="rounded-lg shadow-lg p-4 w-full bg-gray-800 max-w-md">
             <form ref={form} onSubmit={sendEmail}>
               <ContactInputBox 
                 type="text" 

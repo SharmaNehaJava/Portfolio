@@ -21,11 +21,7 @@ const Work = () => {
       projectLink: '#',
       codeLink: 'https://github.com/SharmaNehaJava/Hawkers-Frontend',
       tags: ['MERN'],
-<<<<<<< HEAD
-      imgUrl: '/images/Modal_0.png',  // Ensure correct image path
-=======
-      imgUrl: "/Modal/Modal_0.png",
->>>>>>> 1da85ba61ecfbd9d070b5ad9a1547e1a17a64eb5
+      imgUrl: '/Modal/Modal_0.png',
     },
     {
       title: 'UniBus',
@@ -33,11 +29,7 @@ const Work = () => {
       projectLink: 'https://uni-3ostcm0in-nehas-projects-66b4a8e9.vercel.app/',
       codeLink: 'https://github.com/SharmaNehaJava/Uni-Bus',
       tags: ['MERN'],
-<<<<<<< HEAD
-      imgUrl: '/images/Modal1_0.png',
-=======
-      imgUrl: "/Modal1/Model1_0.png",
->>>>>>> 1da85ba61ecfbd9d070b5ad9a1547e1a17a64eb5
+      imgUrl: '/Modal1/Model1_0.png',
     },
     {
       title: 'EasyFill',
@@ -45,11 +37,7 @@ const Work = () => {
       projectLink: 'https://sharmanehajava.github.io/EasyFill/',
       codeLink: 'https://github.com/SharmaNehaJava/EasyFill',
       tags: ['Frontend'],
-<<<<<<< HEAD
-      imgUrl: '/images/Modal2_0.png',
-=======
-      imgUrl: "/Modal2/Modal2_0.png",
->>>>>>> 1da85ba61ecfbd9d070b5ad9a1547e1a17a64eb5
+      imgUrl: '/Modal2/Modal2_0.png',
     },
   ];
 
@@ -90,43 +78,51 @@ const Work = () => {
   };
 
   return (
-    <div id="projects-section" className='text-white'>
-      <h2 className="text-8xl text-center font-bold pt-4">P<span className='text-4xl animate-pulse underline '>rojects</span></h2>
+    <div id="projects-section" className="text-white p-4">
+      <h2 className="text-4xl text-center font-bold pt-4">
+        P<span className="text-2xl animate-pulse underline">rojects</span>
+      </h2>
 
-      <div className='bg-gray-900 m-4 p-1 rounded-md'>
-        <div className="app__work-filter bg-gray-800 rounded-md">
+      {/* Filter Buttons */}
+      <div className="bg-gray-900 m-4 p-1 rounded-md">
+        <div className="flex justify-center space-x-4 bg-gray-800 p-4 rounded-md">
           {['Frontend', 'MERN', 'All'].map((item, index) => (
             <div
-              key={index + 1}
+              key={index}
               onClick={() => handleWorkFilter(item)}
-              className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}
+              className={`cursor-pointer text-sm sm:text-base py-2 px-4 rounded-lg ${activeFilter === item ? 'bg-orange-400' : 'bg-gray-600 hover:bg-gray-500'}`}
             >
               {item}
             </div>
           ))}
         </div>
 
+        {/* Projects Grid */}
         <motion.div
           animate={animateCard}
           transition={{ duration: 0.5, delayChildren: 0.5 }}
-          className="app__work-portfolio"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-8"
         >
           {filterWork.map((work, index) => (
-            <div className="app__work-item app__flex" key={index}>
-              <div className="app__work-img app__flex">
-                <img src={work.imgUrl} alt={work.name} />
+            <div className="relative group bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl" key={index}>
+              <div className="relative overflow-hidden rounded-lg">
+                <img
+                  src={work.imgUrl}
+                  alt={work.name}
+                  className="w-full h-64 object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+                />
 
                 <motion.div
                   whileHover={{ opacity: [0, 1] }}
                   transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
-                  className="app__work-hover app__flex"
+                  className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 flex items-center justify-center space-x-4"
                 >
                   <a href={work.projectLink} target="_blank" rel="noreferrer">
                     <motion.div
                       whileInView={{ scale: [0, 1] }}
                       whileHover={{ scale: [1, 0.90] }}
                       transition={{ duration: 0.25 }}
-                      className="app__flex"
+                      className="text-white text-2xl"
                     >
                       <AiFillEye />
                     </motion.div>
@@ -136,36 +132,36 @@ const Work = () => {
                       whileInView={{ scale: [0, 1] }}
                       whileHover={{ scale: [1, 0.90] }}
                       transition={{ duration: 0.25 }}
-                      className="app__flex"
+                      className="text-white text-2xl"
                     >
                       <AiFillGithub />
                     </motion.div>
                   </a>
-
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
                     whileHover={{ scale: [1, 0.90] }}
                     transition={{ duration: 0.25 }}
-                    className="app__flex"
+                    className="text-white text-2xl"
                   >
                     <BsOpencollective onClick={() => nameHandler(work.title)} />
                   </motion.div>
-
                 </motion.div>
               </div>
 
-              <div className="app__work-content app__flex">
-                <h4 className="bold-text">{work.title}</h4>
-                <p className="p-text" style={{ marginTop: 10 }}>{work.description}</p>
-
-                <div className="app__work-tag app__flex">
-                  <p className="p-text">{work.tags[0]}</p>
+              <div className="text-center mt-4">
+                <h4 className="text-lg font-bold">{work.title}</h4>
+                <p className="text-sm mt-2 text-gray-300">{work.description}</p>
+                <div className="mt-2">
+                  <span className="px-2 py-1 bg-orange-500 text-sm text-white rounded-full">
+                    {work.tags[0]}
+                  </span>
                 </div>
               </div>
             </div>
           ))}
         </motion.div>
 
+        {/* Modals */}
         {showModal && <Modal setShowModal={setShowModal} />}
         {showModal1 && <Modal1 setShowModal={setShowModal1} />}
         {showModal2 && <Modal2 setShowModal={setShowModal2} />}
@@ -179,4 +175,3 @@ export default AppWrap(
   'work',
   'app__primarybg',
 );
- 

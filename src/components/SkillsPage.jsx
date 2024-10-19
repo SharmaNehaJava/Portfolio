@@ -1,5 +1,5 @@
 import React from 'react';
-import SkillItem from './SkillItem'; // Import the new SkillItem component
+import SkillItem from './SkillItem'; // Import the SkillItem component
 
 const skills = [
   { name: 'HTML', icon: '/html.png' },
@@ -18,10 +18,13 @@ const skills = [
 
 const SkillsPage = () => {
   return (
-    <div id="skills-section" className="relative w-full h-auto bg-gray-950 p-8 h-screen">
-      <h1 className='text-white font-semibold text-2xl flex items-center justify-center underline m-4'>SKILLS</h1>
-      {/* Skill Divs */}
-      <div className="relative flex flex-wrap gap-6 justify-center items-center">
+    <div id="skills-section" className="relative w-full bg-gray-950 p-6 min-h-screen">
+      <h1 className="text-white font-bold text-4xl flex items-center justify-center underline m-4 mb-6">
+        SKILLS
+      </h1>
+
+      {/* Skill Grid for responsiveness */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-center items-center">
         {skills.map((skill, index) => (
           <SkillItem key={index} skill={skill} />
         ))}

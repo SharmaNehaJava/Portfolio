@@ -44,7 +44,7 @@ const SkillItem = ({ skill }) => {
 
   return (
     <div
-      className="flex flex-col items-center rounded-md p-4 shadow-lg transition-transform duration-300 transform hover:scale-105 bg-cover bg-center bg-gray-800 m-2 "
+      className="flex flex-col items-center rounded-md p-4 shadow-lg transition-transform duration-300 transform hover:scale-105 bg-cover bg-center bg-gray-800 mx-auto "
       style={{
         backgroundImage: "url('/star.png')",
         backgroundSize: 'contain', 
@@ -53,9 +53,8 @@ const SkillItem = ({ skill }) => {
         height: '150px',
       }}
     >
-      {/* Centered 3D Canvas */}
+     
       <div ref={ref} className="w-32 h-32 mb-2 flex justify-center items-center bg-transparent" /> {/* Ensure it is centered */}
-      {/* Skill Name */}
       <p className="text-lg font-semibold text-white text-center">{skill.name}</p>
     </div>
   );

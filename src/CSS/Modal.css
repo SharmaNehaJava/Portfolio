@@ -40,7 +40,7 @@
 
 .Heading h1 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2rem; /* Use rem for responsiveness */
   font-weight: 600;
   color: #333;
   margin-bottom: 15px;
@@ -56,6 +56,7 @@
   display: flex;
   justify-content: space-evenly;
   margin: 15px 0;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 .Demo-live a {
@@ -74,7 +75,7 @@
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack vertically */
 }
 
 .image-con {
@@ -92,7 +93,7 @@
 }
 
 .items {
-  width: 70px;
+  width: 70px; /* Consider using percentages */
   cursor: pointer;
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -142,11 +143,23 @@
   }
 
   .items {
-      width: 50px;
+      width: 50px; /* Reduced size for smaller screens */
   }
 
   .Demo-live a {
       padding: 10px 20px;
-      font-size: 14px;
+      font-size: 14px; /* Adjusted font size for buttons */
+  }
+
+  .Heading h1 {
+      font-size: 1.5rem; /* Responsive heading size */
+  }
+
+  .para {
+      font-size: 0.9rem; /* Responsive paragraph size */
+  }
+
+  .feature {
+      font-size: 1.1rem; /* Responsive feature heading size */
   }
 }
