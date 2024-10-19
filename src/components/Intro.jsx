@@ -19,57 +19,81 @@ const Intro = () => {
     >
       {/* Left side content */}
       <div className="flex-1 text-white p-8 text-center lg:text-left">
-        <h1 className="text-5xl font-bold mb-4">Neha Sharma</h1>
-        <h2 className="text-xl text-blue-400 mb-8">
-          Full Stack Web Developer | B.Tech in Computer Science
-        </h2>
-        <p className="text-lg mb-6 text-justify">
-          A software engineer who is organized, focused, and eager to take on new challenges.
-        </p>
-        <p className="text-lg mb-6 text-justify">
-          Proficient in Data Structures & Algorithms, Database Management Systems, Object-Oriented Programming, and full-stack development
-          using the MERN stack. I am constantly learning and applying new technologies in real-world projects.
-        </p>
+  <h1 className="text-5xl font-bold mb-4">Neha Sharma</h1>
+  <h2 className="text-xl text-blue-400 mb-8">
+    Full Stack Web Developer | B.Tech in Computer Science
+  </h2>
+  <p className="text-lg mb-6 text-justify">
+    A software engineer who is organized, focused, and eager to take on new challenges.
+  </p>
+  <p className="text-lg mb-6 text-justify">
+    Proficient in Data Structures & Algorithms, Database Management Systems, Object-Oriented Programming, and full-stack development using the MERN stack. I am constantly learning and applying new technologies in real-world projects.
+  </p>
 
-        <div className="flex space-x-4 mb-8">
-        <div className='bg-white rounded-full'>
-            <img width="48" height="48" src="https://img.icons8.com/color/60/linkedin.png" alt="linkedin"/>
-          </div>
-          <div className='bg-white rounded-full'>
-          <img width="48" height="48" src="https://img.icons8.com/ios-glyphs/60/github.png" alt="github"/>
-          </div>
-          <div className='bg-white rounded-full'>
-          <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-color-tal-revivo.png" alt="external-level-up-your-coding-skills-and-quickly-land-a-job-logo-color-tal-revivo"/>
-          </div>
+  {/* Flex container for social media icons and links */}
+  <div className="flex justify-start space-x-8 mb-8">
+    {/* LinkedIn */}
+    <div className="flex flex-col items-center">
+      <div className="bg-white rounded-full p-2">
+        <img
+          width="48"
+          height="48"
+          src="https://img.icons8.com/color/60/linkedin.png"
+          alt="linkedin"
+        />
       </div>
+      <a
+        href="https://www.linkedin.com/in/nehasharma1782/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 hover:text-blue-600 underline mt-2"
+      >
+        LinkedIn
+      </a>
+    </div>
 
-        <div className="flex space-x-4 mb-8">
-        <a
-          href="https://www.linkedin.com/in/nehasharma1782/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-600 underline"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/SharmaNehaJava"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-600 underline"
-        >
-          GitHub
-        </a>
-        <a
-          href="https://leetcode.com/u/neha_sharma_1782/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-600 underline"
-        >
-          LeetCode
-        </a>
+    {/* GitHub */}
+    <div className="flex flex-col items-center">
+      <div className="bg-white rounded-full p-2">
+        <img
+          width="48"
+          height="48"
+          src="https://img.icons8.com/ios-glyphs/60/github.png"
+          alt="github"
+        />
       </div>
+      <a
+        href="https://github.com/SharmaNehaJava"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 hover:text-blue-600 underline mt-2"
+      >
+        GitHub
+      </a>
+    </div>
+
+    {/* LeetCode */}
+    <div className="flex flex-col items-center">
+      <div className="bg-white rounded-full p-2">
+        <img
+          width="48"
+          height="48"
+          src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-color-tal-revivo.png"
+          alt="leetcode"
+        />
       </div>
+      <a
+        href="https://leetcode.com/u/neha_sharma_1782/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 hover:text-blue-600 underline mt-2"
+      >
+        LeetCode
+      </a>
+    </div>
+  </div>
+</div>
+
 
       {/* Right side layered divs */}
       <div

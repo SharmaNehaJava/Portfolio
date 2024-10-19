@@ -14,33 +14,25 @@ export default function Modal({ setShowModal }) {
 
     const handleChangeImg = (e) => {
         setImage(e.target.src);
-    }
+    };
 
     const handleChangeImgOut = () => {
         setImage(budget4);
-    }
+    };
 
     useEffect(() => {
         document.body.style.overflow = "hidden";
 
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') {
-                setShowModal(false);
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
         return () => {
             document.body.style.overflow = "auto";
-            window.removeEventListener('keydown', handleKeyDown);
-        }
-    }, [setShowModal]);
+        };
+    }, []);
 
     return (
         <div className='modal'>
             <div className='scroll_model'>
                 <div className='cross1'>
-                    <IoClose className='cross' onClick={() => { setShowModal(false); }} tabIndex={0} />
+                    <IoClose className='cross' onClick={() => setShowModal(false)} tabIndex={0} />
                 </div>
                 <div className='Heading'>
                     <h1>Uni-Bus</h1>
@@ -82,7 +74,7 @@ export default function Modal({ setShowModal }) {
                             <strong>Description</strong>
                         </div>
                         <p className='para'>
-                            This project is based on the idea to provide a platform for bus transportation where daily peddlers can also use bus services by recharging their account.
+                            This project is based on the idea to provide a platform for bus transportation where daily commuters can also use bus services by recharging their accounts.
                         </p>
 
                         <div className='tech text-black'>
