@@ -25,7 +25,7 @@ const Home = () => {
             to="intro"
             smooth={true}
             duration={500}
-            className="text-pink-300 font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1"
+            className="text-pink-300 font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1 animate-pulse"
           >
             Intro
           </Link>
