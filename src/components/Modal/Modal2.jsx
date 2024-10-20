@@ -80,10 +80,10 @@ export default function Modal({ setShowModal }) {
                         <div className='tech'>
                             <strong>Technology Used</strong>
                         </div>
-                        <div className='tech_used'>
-                            <div className='boarderClass'>React</div>
-                            <div className='boarderClass'>Firebase</div>
-                            <div className='boarderClass'>Tailwind CSS</div>
+                        <div className='tech_used text-black'>
+                            <div className='boarderClass'>HTML</div>
+                            {/* <div className='boarderClass'>Firebase</div> */}
+                            <div className='boarderClass'>CSS</div>
                         </div>
                     </div>
                 </div>

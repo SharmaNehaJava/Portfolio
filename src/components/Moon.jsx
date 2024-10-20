@@ -2,8 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import moonTexture from '../../public/moon-texture.jpg';
-import moonDisplacementMap from '../../public/moon-displacement.jpg'; 
-import starBackground from '../../public/stars.jpg'; 
+import moonDisplacementMap from '../../public/moon-displacement.jpg';
+import starBackground from '../../public/stars.jpg';
 
 const Moon = () => {
   const mountRef = useRef(null);
@@ -30,8 +30,15 @@ const Moon = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
+    // Adjust moon size based on window width
+    const getMoonSize = () => {
+      if (window.innerWidth < 768) return 1.5; // Smaller size for mobile
+      if (window.innerWidth < 1024) return 2; // Medium size for tablets
+      return 3; // Default size for larger screens
+    };
+
     // Moon geometry and material
-    const geometry = new THREE.SphereGeometry(3, 64, 64);
+    const geometry = new THREE.SphereGeometry(getMoonSize(), 64, 64);
     const material = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       map: textureLoader.load(moonTexture),
@@ -52,11 +59,9 @@ const Moon = () => {
     directionalLight.position.set(60, 0, 50);
     scene.add(directionalLight);
 
-    // Ambient light to enhance the shadow effects
     const ambientLight = new THREE.AmbientLight(0x404040, 0.2); // Dim ambient light for shadows
     scene.add(ambientLight);
 
-    // Blue light to add a cool tone and shadow effect
     const blueLight = new THREE.DirectionalLight(0x0000ff, 1.5);
     blueLight.position.set(-10, -20, 5);
     scene.add(blueLight);
@@ -67,19 +72,22 @@ const Moon = () => {
     controls.enableZoom = false;
     controls.enablePan = false;
 
+    // Disable OrbitControls on touch devices to enable scrolling
+    if (window.innerWidth < 768) {
+      controls.enabled = false;
+    }
+
     // Animation loop
     let scaleDirection = 1;
     let starTextureOffsetX = 0;
     let starTextureOffsetY = 0;
 
     const animate = () => {
-      // Moon rotation and scaling
       moon.rotation.y += 0.002;
       moon.scale.x += scaleDirection * 0.001;
       moon.scale.y += scaleDirection * 0.001;
       moon.scale.z += scaleDirection * 0.001;
 
-      // Reverse scaling direction at limits
       if (moon.scale.x > 1.3 || moon.scale.x < 1) {
         scaleDirection *= -1;
       }

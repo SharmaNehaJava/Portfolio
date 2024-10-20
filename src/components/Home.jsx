@@ -12,7 +12,7 @@ const Home = () => {
       {/* Fixed Navigation Bar */}
       <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-70 p-2 z-10 flex flex-col md:flex-row justify-between items-center">
         {/* Centered Navigation Links */}
-        <div className="flex flex-wrap justify-center space-x-4 mx-auto"> 
+        <div className="flex flex-wrap justify-center space-x-4 mx-auto">
           <Link
             to="home-section"
             smooth={true}
