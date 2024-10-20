@@ -18,13 +18,13 @@ const skills = [
 
 const SkillsPage = () => {
   return (
-    <div id="skills-section" className="relative w-full bg-gray-950 p-6 min-h-screen">
-      <h1 className="text-white font-bold text-4xl flex items-center justify-center underline m-4 mb-6">
+    <div id="skills-section" className="relative w-full bg-gray-950 p-4 min-h-screen">
+      <h1 className="text-white font-bold text-4xl flex items-center justify-center underline mb-6">
         SKILLS
       </h1>
 
       {/* Skill Grid for responsiveness */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-center items-center">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-center items-center">
         {skills.map((skill, index) => (
           <SkillItem key={index} skill={skill} />
         ))}
