@@ -15,9 +15,9 @@ const Moon = () => {
     // Load star background texture
     const textureLoader = new THREE.TextureLoader();
     const starTexture = textureLoader.load(starBackground);
-    starTexture.wrapS = THREE.RepeatWrapping; // Repeat texture horizontally
-    starTexture.wrapT = THREE.RepeatWrapping; // Repeat texture vertically
-    starTexture.repeat.set(1, 1); // Initial repeat values
+    starTexture.wrapS = THREE.RepeatWrapping; 
+    starTexture.wrapT = THREE.RepeatWrapping; 
+    starTexture.repeat.set(1, 1); 
     scene.background = starTexture;
 
     // Camera setup
@@ -32,9 +32,9 @@ const Moon = () => {
 
     // Adjust moon size based on window width
     const getMoonSize = () => {
-      if (window.innerWidth < 768) return 1.5; // Smaller size for mobile
-      if (window.innerWidth < 1024) return 2; // Medium size for tablets
-      return 3; // Default size for larger screens
+      if (window.innerWidth < 768) return 1.5; 
+      if (window.innerWidth < 1024) return 2; 
+      return 3;
     };
 
     // Moon geometry and material
@@ -55,24 +55,24 @@ const Moon = () => {
     scene.add(moon);
 
     // Lighting
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 3); // Simulating sunlight
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3); 
     directionalLight.position.set(60, 0, 50);
     scene.add(directionalLight);
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.2); // Dim ambient light for shadows
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.2); 
     scene.add(ambientLight);
 
     const blueLight = new THREE.DirectionalLight(0x0000ff, 1.5);
     blueLight.position.set(-10, -20, 5);
     scene.add(blueLight);
 
-    // OrbitControls
+    // OrbitControls (disabled for mobile)
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enableZoom = false;
     controls.enablePan = false;
 
-    // Disable OrbitControls on touch devices to enable scrolling
+    // Disable OrbitControls if screen width is less than 768px (for mobile)
     if (window.innerWidth < 768) {
       controls.enabled = false;
     }
@@ -95,7 +95,7 @@ const Moon = () => {
       // Move the star background texture
       starTextureOffsetX += 0.0005;
       starTextureOffsetY += 0.0005;
-      starTexture.offset.set(starTextureOffsetX % 1, starTextureOffsetY % 1); // Keep offset within [0, 1]
+      starTexture.offset.set(starTextureOffsetX % 1, starTextureOffsetY % 1); 
 
       controls.update();
       renderer.render(scene, camera);

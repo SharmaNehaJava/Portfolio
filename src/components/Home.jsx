@@ -79,11 +79,11 @@ const Home = () => {
       {/* Main Content */}
       <div className="absolute lg:top-1/3 left-0 right-0 text-center justify-center mx-auto items-center">
         <h1
-          className="text-blue-300 hover:opacity-100 hover:text-blue-500"
+          className="text-blue-400 hover:opacity-100 hover:text-blue-600"
           style={{
             fontFamily: 'Bungee Hairline, sans-serif',
             fontOpticalSizing: 'auto',
-            fontWeight: 400,
+            fontWeight: 500,
             fontStyle: 'normal',
             fontSize: '10vw', // Adjust font size to be responsive
           }}
