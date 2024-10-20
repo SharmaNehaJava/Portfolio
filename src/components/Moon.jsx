@@ -66,16 +66,11 @@ const Moon = () => {
     blueLight.position.set(-10, -20, 5);
     scene.add(blueLight);
 
-    // OrbitControls (disabled for mobile)
+    // OrbitControls (enabled for all devices)
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enableZoom = false;
     controls.enablePan = false;
-
-    // Disable OrbitControls if screen width is less than 768px (for mobile)
-    if (window.innerWidth < 768) {
-      controls.enabled = false;
-    }
 
     // Animation loop
     let scaleDirection = 1;
