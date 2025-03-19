@@ -46,7 +46,7 @@ const Contact = () => {
     <div id="contact-section" className="flex flex-col min-h-screen">
       {/* Animated Contact Heading */}
       <div className="items-center justify-center text-center pt-12">
-        <h1 className="text-4xl font-bold text-blue-500 animate-slideText">
+        <h1 className="text-4xl font-bold text-blue-500 animate-slideText hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-blue-500">
           Contact... Contact... Contact
         </h1>
         <p className="text-sm mx-6 mt-2 text-white underline">
@@ -72,7 +72,7 @@ const Contact = () => {
                 placeholder="Your Name" 
                 required // Add required attribute
               />
-              <input type="hidden" name="to_name" value="Neha" />
+              <input type="hidden" name="to_name" value="Neha"  />
               <ContactInputBox 
                 type="email" 
                 name="reply_to" 

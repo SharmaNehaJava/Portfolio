@@ -17,7 +17,7 @@ const Home = () => {
             to="home-section"
             smooth={true}
             duration={500}
-            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1"
+            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-500 hover:underline py-1"
           >
             Home
           </Link>
@@ -25,7 +25,7 @@ const Home = () => {
             to="intro"
             smooth={true}
             duration={500}
-            className="text-pink-300 font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1 animate-pulse"
+            className="text-pink-500 font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-500 hover:underline py-1 animate-pulse"
           >
             Intro
           </Link>
@@ -33,7 +33,7 @@ const Home = () => {
             to="skills-section"
             smooth={true}
             duration={500}
-            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1"
+            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-500 hover:underline py-1"
           >
             Skills
           </Link>
@@ -41,7 +41,7 @@ const Home = () => {
             to="projects-section"
             smooth={true}
             duration={500}
-            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1"
+            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-500 hover:underline py-1"
           >
             Projects
           </Link>
@@ -49,7 +49,7 @@ const Home = () => {
             to="blog-section"
             smooth={true}
             duration={500}
-            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1"
+            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-500 hover:underline py-1"
           >
             Blogs
           </Link>
@@ -57,7 +57,7 @@ const Home = () => {
             to="contact-section"
             smooth={true}
             duration={500}
-            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-400 hover:underline py-1"
+            className="text-white font-serif text-sm md:text-base transform transition-all duration-300 hover:scale-110 hover:text-blue-500 hover:underline py-1"
           >
             Contact
           </Link>
@@ -66,10 +66,10 @@ const Home = () => {
         {/* Resume Link in the top right */}
         <div className="absolute right-4 top-12">
           <a
-            href="/neha_resume.pdf"
+            href="neha_resume_19-March-2025 .pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-serif underline text-blue-400 hover:text-fuchsia-400 transition-all duration-300 px-4 py-1 rounded-full shadow-lg text-sm md:text-base"
+            className="font-serif underline text-blue-500 hover:text-fuchsia-500 transition-all duration-300 px-4 py-1 rounded-full shadow-lg text-sm md:text-base"
           >
             Resume
           </a>
@@ -79,7 +79,7 @@ const Home = () => {
       {/* Main Content */}
       <div className="absolute lg:top-1/3 left-0 right-0 text-center justify-center mx-auto items-center">
         <h1
-          className="text-blue-400 hover:opacity-100 hover:text-blue-600"
+          className="text-blue-500 hover:opacity-100 hover:text-purple-500 "
           style={{
             fontFamily: 'Bungee Hairline, sans-serif',
             fontOpticalSizing: 'auto',
@@ -90,7 +90,7 @@ const Home = () => {
         >
           NEHA SHARMA
         </h1>
-        <h4 className="font-sans text-white transform transition-transform duration-500 hover:scale-110 text-lg md:text-xl">
+        <h4 className="font-sans text-white transform transition-transform duration-500 hover:scale-110 text-lg md:text-xl ">
           FULL STACK WEB DEVELOPER | FREELANCER
         </h4>
       </div>

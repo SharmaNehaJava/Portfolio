@@ -15,7 +15,7 @@ const Intro = () => {
   return (
     <div
       id="intro"
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 bg-cover bg-center"
+      className="min-h-screen w-screen flex flex-col lg:flex-row items-center justify-center p-4 bg-cover bg-center"
       style={{ backgroundImage: `url('/stars.jpg')` }} // Background image
     >
       {/* Left side layered divs */}
@@ -36,7 +36,7 @@ const Intro = () => {
 
           {/* Circular div with the profile picture */}
           <img
-            src="/me_Formal2.jpg" // Profile image path
+            src="pic1.jpg" // Profile image path
             alt="Neha Sharma"
             className="w-[230px] h-[230px] md:w-[290px] md:h-[290px] z-10 object-cover rounded-full"
           />
@@ -45,7 +45,7 @@ const Intro = () => {
 
       {/* Right side content */}
       <div className="flex-1 text-white px-4 lg:px-8 text-center lg:text-left">
-        <h1 className="text-3xl lg:text-5xl font-bold mb-4">Neha Sharma</h1>
+        <h1 className="text-3xl lg:text-5xl font-bold mb-4 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500">Neha Sharma</h1>
         <h2 className="text-lg lg:text-xl text-blue-400 mb-8">
           Full Stack Web Developer | B.Tech in Computer Science
         </h2>

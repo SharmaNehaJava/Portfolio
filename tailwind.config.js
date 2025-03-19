@@ -6,6 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        darkBg: "#1a1a2e",
+        darkCard: "#162447",
+        primary: "#1f4068",
+        accent: "#e43f5a",
+      },
       keyframes: {
         slideText: {
           '0%': { transform: 'translateX(-10%)' },

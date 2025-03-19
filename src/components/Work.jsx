@@ -18,7 +18,7 @@ const Work = () => {
     {
       title: 'Hawkers',
       description: 'A platform connecting local street vendors with customers for better accessibility.',
-      projectLink: '#',
+      projectLink: 'http://hawkers-frontend.vercel.app/',
       codeLink: 'https://github.com/SharmaNehaJava/Hawkers-Frontend',
       tags: ['MERN'],
       imgUrl: '/Modal/Modal_0.png',
@@ -78,14 +78,14 @@ const Work = () => {
   };
 
   return (
-    <div id="projects-section" className="text-white p-4">
-      <h2 className="text-4xl text-center font-bold pt-4">
-        P<span className="text-2xl animate-pulse underline">rojects</span>
+    <div id="projects-section" className="text-white p-6 m-0 w-screen  min-h-screen">
+      <h2 className="text-3xl lg:text-5xl text-center font-bold flex-1  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-blue-500 ">
+        PROJECTS
       </h2>
 
       {/* Filter Buttons */}
       <div className="bg-gray-900 m-4 p-1 rounded-md">
-        <div className="flex justify-center space-x-4 bg-gray-800 p-4 rounded-md">
+        <div className="flex justify-center space-x-4  p-4 rounded-md">
           {['Frontend', 'MERN', 'All'].map((item, index) => (
             <div
               key={index}
@@ -101,7 +101,7 @@ const Work = () => {
         <motion.div
           animate={animateCard}
           transition={{ duration: 0.5, delayChildren: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8 bg-gray-600"
         >
           {filterWork.map((work, index) => (
             <div className="relative group bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl" key={index}>

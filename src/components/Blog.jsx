@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import CommentSection from "./CommentSection";
+import api from "../services/api";
 
 // Blog Component
 const Blog = () => {
